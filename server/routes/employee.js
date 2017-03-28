@@ -64,7 +64,7 @@ router.delete("/", function(req,res){
   // { "id" : "83275019375918538?"}
   var id = req.body.id;
   Employees.findByIdAndRemove(id, function(err, deletedEmployee){
-    /*
+    /*fffff
       if(undefined){} - False Value
       if("Some Error Code"){} - True Value
     */
@@ -75,6 +75,26 @@ router.delete("/", function(req,res){
     }
 
     res.send(deletedEmployee);
+  });
+});
+
+//Update an employee
+router.put("/", function(req, res){
+  var id = req.body.id;
+  Employees.findById(id, function(err, updatedEmployee){
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      updatedEmployee.name = req.body.name || updatedEmployee.name;
+      updatedEmployee.position = req.body.position|| updatedEmployee.position;
+      updatedEmployee.salary = req.body.salary || updatedEmployee.salary;
+      updatedEmployee.save(function(err, todo) {
+        if(err) {
+          res.status(500).send(err);
+        }
+        res.send(updatedEmployee);
+      });
+    }
   });
 });
 
