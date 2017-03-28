@@ -27,7 +27,7 @@ app.set("port", (process.env.PORT || 5000));
 
 //Middleware hookups
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("/server/public/"));
+app.use(express.static("server/public"));
 
 //Routes
 app.use("/employees", employees);
