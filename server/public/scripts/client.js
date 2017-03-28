@@ -79,4 +79,8 @@ function appendDom(dataArray){
    $el.append( '<p>'+salary+'</p>');
    $el.append( '<button>Delete</button>');
  }//ends for loop
+ $('#name').val('');
+ $('#position').val('');
+ $('#salary').val('');
+ $('#name').focus();
 }//ends appendDom
